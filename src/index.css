@@ -1,15 +1,117 @@
 @import "tailwindcss";
 
+@theme {
+  --font-sans: "DM Sans", ui-sans-serif, system-ui, sans-serif;
+  --font-mono: "IBM Plex Mono", ui-monospace, SFMono-Regular, monospace;
+  --color-ink-950: #101a2c;
+  --color-ink-900: #17243a;
+  --color-ink-700: #40506a;
+  --color-ink-500: #71809a;
+  --color-mist-50: #f7f8f5;
+  --color-mist-100: #eef1ec;
+  --color-mint-500: #1f9d75;
+  --color-mint-600: #167d5e;
+  --color-coral-500: #e98762;
+}
+
+:root {
+  color-scheme: light;
+  font-family: "DM Sans", ui-sans-serif, system-ui, sans-serif;
+  background: #f7f8f5;
+  color: #17243a;
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  min-width: 320px;
+  min-height: 100vh;
+  margin: 0;
+  background:
+    radial-gradient(circle at 12% 0%, rgba(31, 157, 117, 0.08), transparent 32rem),
+    #f7f8f5;
+}
+
+button,
+a,
+input,
+select,
+textarea {
+  font: inherit;
+}
+
+button,
+a {
+  -webkit-tap-highlight-color: transparent;
+}
+
+button:focus-visible,
+a:focus-visible,
+input:focus-visible,
+select:focus-visible,
+textarea:focus-visible {
+  outline: 3px solid rgba(31, 157, 117, 0.35);
+  outline-offset: 3px;
+}
+
+::selection {
+  background: #b8ead8;
+  color: #101a2c;
+}
+
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: #eef1ec;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #c0c9c2;
+  border: 3px solid #eef1ec;
+  border-radius: 999px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #8fa095;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
 @media print {
   aside,
   header,
   nav,
   .no-print,
-  .print\:hidden {
+  .print\\:hidden {
     display: none !important;
   }
 
-  body, html {
+  body,
+  html {
     background: #ffffff !important;
     color: #0f172a !important;
   }
@@ -25,7 +127,8 @@
     border-collapse: collapse !important;
   }
 
-  th, td {
+  th,
+  td {
     color: #0f172a !important;
     border: 1px solid #e2e8f0 !important;
     padding: 8px 12px !important;
