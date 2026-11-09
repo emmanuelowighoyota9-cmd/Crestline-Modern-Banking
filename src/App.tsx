@@ -439,9 +439,6 @@ export default function App() {
       fetchAccounts();
       fetchTransactions();
       fetchNotifications();
-    } else {
-      // Auto-load Sarah Jenkins demo customer session on first arrival for seamless evaluation
-      quickDemoLogin('sarah.jenkins@crestline.bank');
     }
   }, []);
 

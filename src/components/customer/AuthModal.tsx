@@ -8,9 +8,13 @@ export const AuthModal: React.FC = () => {
   const [activeTab, setActiveTab] = useState<'login' | 'register' | 'forgot'>(authModalTab || 'login');
   const [loading, setLoading] = useState(false);
 
+  React.useEffect(() => {
+    setActiveTab(authModalTab || 'login');
+  }, [authModalTab]);
+
   // Login form state
-  const [loginEmail, setLoginEmail] = useState('sarah.jenkins@crestline.bank');
-  const [loginPassword, setLoginPassword] = useState('Crestline2026!');
+  const [loginEmail, setLoginEmail] = useState('');
+  const [loginPassword, setLoginPassword] = useState('');
 
   // Register form state
   const [firstName, setFirstName] = useState('');
@@ -38,8 +42,16 @@ export const AuthModal: React.FC = () => {
 
   const handleRegisterSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    if (regPassword.length < 8) {
+      showToast('Password must be at least 8 characters', 'error');
+      return;
+    }
     if (regPassword !== confirmPassword) {
       showToast('Passwords do not match', 'error');
+      return;
+    }
+    if (!termsAccepted) {
+      showToast('Please accept the terms of service', 'error');
       return;
     }
     setLoading(true);
